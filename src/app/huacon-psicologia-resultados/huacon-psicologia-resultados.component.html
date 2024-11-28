@@ -1,0 +1,22 @@
+<div>
+    <input type="text" [(ngModel)]="searchTerm" (input)="filterDocuments()" placeholder="Buscar documentos..." />
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Documento</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let doc of filteredDocuments">
+                <td>{{ doc.name }}</td>
+                <td>
+                    <button (click)="openPdf(doc.url)">Mostrar PDF</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <pdf-viewer *ngIf="pdfSrc" [src]="pdfSrc" [render-text]="true" style="display: block;"></pdf-viewer>
+</div>

@@ -1,0 +1,48 @@
+<div>
+    <h2>Registro de Citas</h2>
+    <form (ngSubmit)="agregarRegistro()">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="nuevoRegistro.nombre" name="nombre" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" [(ngModel)]="nuevoRegistro.email" name="email" required>
+
+        <label for="doctor">Doctor:</label>
+        <input type="text" id="doctor" [(ngModel)]="nuevoRegistro.doctor" name="doctor" required>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" [(ngModel)]="nuevoRegistro.fecha" name="fecha" required>
+
+        <label for="hora">Hora:</label>
+        <input type="time" id="hora" [(ngModel)]="nuevoRegistro.hora" name="hora" required>
+
+        <button type="submit">{{ editarIndex !== null ? 'Actualizar' : 'Agregar' }}</button>
+    </form>
+
+    <h3>Lista de Registros</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Doctor</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let registro of registros; let i = index">
+                <td>{{ registro.nombre }}</td>
+                <td>{{ registro.email }}</td>
+                <td>{{ registro.doctor }}</td>
+                <td>{{ registro.fecha }}</td>
+                <td>{{ registro.hora }}</td>
+                <td>
+                    <button (click)="editarRegistro(i)">Editar</button>
+                    <button (click)="eliminarRegistro(i)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

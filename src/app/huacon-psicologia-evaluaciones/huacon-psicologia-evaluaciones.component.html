@@ -1,0 +1,40 @@
+<div>
+    <h2>Registro de Evaluaciones</h2>
+    <form (ngSubmit)="agregarEvaluacion()">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="nuevoEvaluacion.nombre" name="nombre" required>
+
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" [(ngModel)]="nuevoEvaluacion.descripcion" name="descripcion" required>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" [(ngModel)]="nuevoEvaluacion.fecha" name="fecha" required>
+
+        <button type="submit">{{ editarIndex !== null ? 'Actualizar' : 'Agregar' }}</button>
+    </form>
+
+    <h3>Lista de Evaluaciones</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let evaluacion of evaluaciones; let i = index">
+                <td>{{ evaluacion.id }}</td>
+                <td>{{ evaluacion.nombre }}</td>
+                <td>{{ evaluacion.descripcion }}</td>
+                <td>{{ evaluacion.fecha }}</td>
+                <td>
+                    <button (click)="editarEvaluacion(i)">Editar</button>
+                    <button (click)="eliminarEvaluacion(i)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
